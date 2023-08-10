@@ -1,0 +1,250 @@
+
+
+.page-title{
+    a{
+        cursor: pointer;
+        color: #2196F3;
+    }
+    mat-icon{
+        vertical-align: bottom;
+    }
+  
+}
+form {
+    display: flex;
+    flex-direction: column;
+    // max-width: 300px;
+    margin: 0 auto;
+  
+    label {
+      margin-top: 10px;
+    }
+  
+    input,
+    textarea {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+  
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  
+    .error {
+      color: red;
+      margin-top: 5px;
+    }
+  }
+  
+  .group-gap {
+    // margin-bottom: 40px;
+  }
+  
+  .btn.focus,
+  .btn:focus,
+  .form-control:focus,
+  .custom-select:focus,
+  .custom-select:focus {
+    box-shadow: none;
+  }
+  
+  .form-control:focus,
+  .custom-select:focus {
+    border: 1px solid #0C1CFF;
+  }
+  
+  .btn-success,
+  .btn-success:hover {
+    color: #312BC6;
+    border-color: #00FC79;
+    background-color: #00FC79;
+  }
+  
+  .btn-group-lg > .btn,
+  .btn-lg {
+    padding: 13px 15px 15px;
+    font-size: 16px;
+    border-radius: 0;
+    text-transform: uppercase;
+  }
+  
+  .btn-group-sm > .btn,
+  .btn-sm {
+    padding: 10px 16px 10px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 0;
+  }
+  
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 10px auto 30px;
+  
+    .avatar-edit {
+      position: absolute;
+      right: 19px;
+      z-index: 1;
+      top: 13px;
+  
+      input {
+        display: none;
+      }
+  
+      .custom-label {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+        border-radius: 100%;
+        background: #3efc78;
+        border: 1px solid transparent;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+  
+        &.upload-image {
+          background: #3efc78;
+        }
+  
+        &.remove-image {
+          background: rgba(233, 30, 98, 0.075);
+        }
+  
+        &:hover {
+          opacity: 1;
+        }
+  
+        &:after {
+          position: absolute;
+          text-align: center;
+          margin: auto;
+          top: 8px;
+          right: 0;
+          left: 2px;
+          width: 18px;
+        }
+  
+        &.upload-image:after {
+          content: url('/assets/edit.svg');
+        }
+  
+        &.remove-image:after {
+          content: url('/assets/close.svg');
+          left: 0px !important;
+        }
+      }
+    }
+  
+    .avatar-preview {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      border-radius: 100%;
+      overflow: hidden;
+      border: 12px solid #fff;
+      -webkit-box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 45px rgba(0, 0, 0, 0.2);
+  
+      > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+  
+  .form-control {
+    height: auto;
+    padding: 15px;
+    font-size: 14px;
+    color: #222222;
+    border-radius: 0;
+    background: #FDFDFD;
+    border: 1px solid #312BC6;
+  }
+  
+  .custom-select {
+    height: auto;
+    padding: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+    color: #222222;
+    background-color: #FDFDFD;
+    border: 1px solid #312BC6;
+  }
+  
+  .custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #3B262D;
+    background-color: rgba(165, 143, 150, 1);
+  }
+  
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: none;
+  }
+  
+  .custom-control-label {
+    cursor: pointer;
+  }
+  
+  .error:focus,
+  .error {
+    border-color: #E91E63;
+    color: #E91E63;
+  }
+  
+  .invalid-feedback {
+    color: #E91E63;
+  }
+  
+  .btn-danger,
+  body .btn-danger:hover {
+    background: rgba(173, 169, 170, 1);
+    border-color: rgb(65, 57, 59);
+    color: white;
+  }
+  
+  .subjectList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  
+    li {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .invalid-feedback {
+    display: block;
+  }
+  
+  .mb-3,
+  .my-3 {
+    margin-bottom: 15px !important;
+  }
+  
+  .custom-control {
+    margin-bottom: 5px;
+  
+    label {
+      font-weight: 400;
+    }
+  }
+  

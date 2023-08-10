@@ -1,0 +1,78 @@
+
+
+<div class="container">
+
+    <div class="buttons-actions my-3">
+        <button mat-raised-button color="primary" (click)="openAddProductPage()" >Add new Product</button>
+    </div>
+
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+              </ng-container>
+    
+              <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef>Image</th>
+                <td mat-cell *matCellDef="let product">
+                  <div class="image-circle">
+                    <img [src]="product.image" alt="Product Image">
+                  </div>
+                </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let product">{{ product.title }}</td>
+              </ng-container>
+              
+              <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef>Price</th>
+                <td mat-cell *matCellDef="let product">{{ product.price }}</td>
+              </ng-container>
+              
+              <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef>Category</th>
+                <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+              </ng-container>
+
+               <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let product">
+                   
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="onEditProduct(product)">
+                          <mat-icon>edit</mat-icon>
+                          <span>Edit</span>
+                        </button>
+                      
+                        <button mat-menu-item (click)="openDeletePopip(product)">
+                          <mat-icon>delete</mat-icon>
+                          <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                      
+                    </td>
+                </ng-container>
+              
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator> -->
+      </div>
+</div>
+
+
+  

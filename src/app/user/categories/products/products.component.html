@@ -1,0 +1,28 @@
+
+<div class="d-flex products-container">
+<mat-card class="product-card m-2" *ngFor="let product of products" (click)="goToProductDetailsPage(product)">
+    <div class="product-image py-2">
+      <img src="{{ product.image }}" alt="{{ product.title }}">
+    </div>
+    <mat-card-content class="product-details text-center">
+      <h2 class="product-title">{{ product.title | slice : 0: 30 }}</h2>
+      <p class="product-category">{{ product.category }}</p>
+      <p class="product-price">{{ product.price | currency }}</p>
+    </mat-card-content>
+    <mat-card-actions >
+        <button mat-raised-button color="primary">
+            <mat-icon>
+                <span class="material-symbols-outlined">
+                    shopping_bag
+                    </span>
+            </mat-icon>
+            Add To Cart
+        </button>
+      </mat-card-actions>
+  </mat-card>
+
+
+  <mat-card *ngIf="products?.length == 0" class="p-5 w-100 bg-dark-subtle text-center fs-3">
+    No Products Found
+  </mat-card>
+  </div>

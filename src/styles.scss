@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables'; // Import the variables.scss file
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    // background: #9e9e9e24;
+}
+
+
+nav{
+    background-color: $primary-color; // Use the primary color variable
+
+}
+

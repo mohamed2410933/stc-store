@@ -1,0 +1,147 @@
+<div class="container">
+    <!-- <p class="my-3"><a [routerLink]="admin/products">Products</a> >  Create New Product </p> -->
+    <div class="my-3 page-title">
+        <a (click)="goBack()">Products</a> 
+        <mat-icon>chevron_right</mat-icon>
+        Create New Product
+        </div>
+      
+    <mat-card>
+        <div class="product-form">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="m-3">
+              <div class="form-group">
+                <label>Title</label>
+                <input
+                  type="text"
+                  formControlName="title"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+                />
+                <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+                  <div *ngIf="f['title'].errors['required']">Title is required</div>
+                </div>
+              </div>
+          
+              <div class="form-group">
+                <label>Price</label>
+                <input
+                  type="text"
+                  formControlName="price"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['price'].errors }"
+                  appNumbersOnly  />
+                <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                  <div *ngIf="f['price'].errors['required']">Price is required</div>
+                </div>
+              </div>
+          
+              <div class="form-group">
+                <label>Description</label>
+                <input
+                  type="text"
+                  formControlName="description"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+                />
+                <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                  <div *ngIf="f['description'].errors['required']">Description is required</div>
+                  
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <label>Image</label>
+                <input
+                  type="text"
+                  formControlName="image"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+                />
+                <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                  <div *ngIf="f['image'].errors['required']">Image is required</div>
+                  
+                </div>
+              </div> -->
+
+              <!-- <div class="form-group">
+                <label>Image</label>
+                <input
+                  type="file"
+                  formControlName="image"
+                  class="form-control"
+                  accept="image/*" 
+                  (change)="onImageChange($event)"
+                  [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+                />
+                <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                  <div *ngIf="f['image'].errors['required']">Image is required</div>
+                </div>
+              </div> -->
+
+
+              <!-- <div class="form-group">
+                <label>Category</label>
+                <input
+                  type="text"
+                  formControlName="category"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['category'].errors }"
+                />
+                <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+                  <div *ngIf="f['category'].errors['required']">Category is required</div>
+                  
+                </div>
+              </div> -->
+
+
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select formControlName="category" id="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['category'].errors }">
+                  <option value="">Select Category</option>
+                  <option [value]="category" *ngFor="let category of categories | async">{{category}}</option>
+                 
+                  <!-- Add more options as needed -->
+                </select>
+                <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+                  <div *ngIf="f['category'].errors['required']">Category is required</div>
+                </div>
+              </div>
+              
+              
+				<div class="group-gap">
+
+					<!-- Upload image -->
+					<div class="avatar-upload">
+						<div class="avatar-edit">
+							<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+                        </div>
+                        <div class="avatar-preview">
+                        <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+             <!-- Submit Button -->
+             <button type="button" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload Image</button>
+
+             
+          
+           
+        
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary mx-2 px-5">{{productId ? 'Update' :  'Save'}}</button>
+                <button
+                  type="button"
+                  (click)="onReset()"
+                  class="btn mx-2 px-5"
+                >
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+    </mat-card>
+</div>
+
+
+  

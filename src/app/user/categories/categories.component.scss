@@ -1,0 +1,18 @@
+.categories-card{
+    mat-card-content{
+        display: flex;
+        justify-content: center;
+    }
+    mat-card-header{
+        flex-direction: column-reverse;
+    }
+}
+
+.product-image-container{
+    width: 100px;
+    height: 100px;
+    img{
+        width: 100%;
+    }
+}
+

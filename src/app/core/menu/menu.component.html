@@ -1,0 +1,12 @@
+<!-- app.component.html -->
+
+<nav>
+    <div class="nav-content">
+      <label for="" >STC Store</label>
+  
+      <div class="icons-section" *ngIf="logedInStatus">
+        <mat-icon (click)="logOut()">logout</mat-icon> 
+      </div>
+    </div>
+  </nav>
+  

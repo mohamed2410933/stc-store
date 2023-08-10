@@ -1,0 +1,39 @@
+
+
+ 
+  <div class="container my-5">
+    
+    <div class="my-3 page-title">
+        <a (click)="goBack()">Products</a> 
+        <mat-icon>chevron_right</mat-icon>
+            {{ product?.title }}
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-6 text-center img-conatiner ">
+                    <img [src]="product?.image" [alt]="product?.title" class="product-image">
+                </div>
+                <div class="col-6 text-center product-info">
+        
+                    <div class="px-5">
+                        <h1>{{ product?.title }}</h1>
+                        <p class="category">{{ product?.category }}</p>
+                        <p class="price">{{ product?.price | currency}}</p>
+                        <p class="description">{{ product?.description }}</p>
+        
+                        <button mat-raised-button color="primary" class="mt-4">
+                            <mat-icon>
+                                <span class="material-symbols-outlined">
+                                    shopping_bag
+                                    </span>
+                            </mat-icon>
+                            Add To Cart
+                        </button>
+                      </div>
+                </div>
+            </div>
+        </div>
+ 
+  </div>
+
+  

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <mat-card class="categories-card mt-3">
+        <mat-card-content>
+            <mat-chip-listbox aria-label="Fish selection">
+                <mat-chip-option class="mx-3" *ngFor="let category of categories" (click)="getProductsByCategory(category)">
+                  {{ category }}
+                </mat-chip-option>
+              </mat-chip-listbox>
+        </mat-card-content>
+    </mat-card>
+    <div class="row mt-5 container-fluid">
+        <div class="w-50">
+            <div class="filter my-3">
+          
+                <div class="mt-2">
+                    <input type="text" placeholder="Search" #searchInput class="form-control"  [(ngModel)]="searchQuery"   >
+                </div>
+            
+            </div>
+        </div>
+   
+         <app-products  [products]="products"></app-products>
+          
+    
+    </div>
+</div>
