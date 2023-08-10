@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { SharedService } from 'src/app/services/shared.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,15 +17,13 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    private sharedService: SharedService,
-
     ) { }
 //=============================================================================================
   loginAsAdmin(): void {
     if (this.userName === 'admin' && this.password === 'admin') {
       localStorage.setItem('userRole' , 'admin')
       this.toastr.success('Admin successfully logged in')
-      this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/products']);
     } else {
       this.toastr.error('Invalid user username or password')
     }
@@ -38,7 +33,8 @@ export class LoginComponent {
     if (this.userName === 'user' && this.password === 'user') {
         localStorage.setItem('userRole' , 'user')
         this.toastr.success('User successfully logged in')
-        this.router.navigate(['/user']);
+        this.router.navigate(['/user/categories']);
+
     } else {
         this.toastr.error('Invalid user username or password')
     }

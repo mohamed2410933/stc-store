@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     CoreComponent,
     MenuComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

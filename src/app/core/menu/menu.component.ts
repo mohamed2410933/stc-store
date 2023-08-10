@@ -25,6 +25,7 @@ ngOnInit(): void {
   logOut(){
     this.logedInStatus =false;
     localStorage.clear();
+    
      this.router.navigate(['/login'])
   }
 //=========================================================================================

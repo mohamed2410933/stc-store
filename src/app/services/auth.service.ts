@@ -9,6 +9,9 @@ export class AuthService {
   constructor(){
     this.userRole = localStorage.getItem('userRole')
   }
+
+
+  
   setUserRole(role: string) {
     this.userRole = role;
   }
@@ -18,11 +21,15 @@ export class AuthService {
   }
 
   isUser(): boolean {
+    this.userRole = localStorage.getItem('userRole')
+
     return this.userRole === 'user';
   }
 
   
   isAdmin(): boolean {
+    this.userRole = localStorage.getItem('userRole')
+
     return this.userRole === 'admin';
   }
   // Other methods and authentication logic
