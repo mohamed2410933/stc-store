@@ -5,7 +5,6 @@ import { AngularMaterialModule } from '../angular-material.module';
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { ToastrModule } from 'ngx-toastr';
-import { DebounceFilterPipe } from './pipes/debounce-filter.pipe';
 // import { AngularMaterialModule } from './angular-material.module';
 
 
@@ -13,8 +12,7 @@ import { DebounceFilterPipe } from './pipes/debounce-filter.pipe';
   declarations: [
    SharedComponent,
    NumbersOnlyDirective,
-   DeleteModalComponent,
-   DebounceFilterPipe
+   DeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +25,7 @@ import { DebounceFilterPipe } from './pipes/debounce-filter.pipe';
     }),
          
   ],
-  exports:[NumbersOnlyDirective , DebounceFilterPipe]
+  exports:[NumbersOnlyDirective]
 
 })
 export class SharedModule { }
