@@ -9,10 +9,7 @@ export class UserAuthGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-    // Add your logic to check if the user is logged in as a regular user (User role)
-    // For example, you can use a service to check the user role from authentication state.
-    const isLoggedInAsUser = true; // Replace this with your actual authentication check.
-
+    const isLoggedInAsUser = true; 
     if (isLoggedInAsUser) {
       return true;
     } else {

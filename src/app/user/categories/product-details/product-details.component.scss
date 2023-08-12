@@ -2,7 +2,6 @@
 .container{
     .content{
         display: flex;
-        height: 75vh;
         align-items: center;
         border: 1px solid #ccc;
         border-radius: 15px;
@@ -12,6 +11,16 @@
             border-right-width: 3px;
             border-right-style: solid;
             border-right-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                transition: transform 0.4s ease-in-out;
+                &:hover {
+                    transform: scale(1.05);
+                  }
+            }
         }
     }
 
@@ -35,4 +44,15 @@
 .product-info{
     display: flex;
     align-items: center;
+    .product-price {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #007bff; 
+      }
+      .product-rating{
+        mat-icon{
+          vertical-align: bottom;
+          color: goldenrod;
+        }
+      }
 }

@@ -5,22 +5,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  constructor() { }
-//=============================================================================================
-  private productDataUpdated: BehaviorSubject<string> = new BehaviorSubject('');
-   productData: Observable<string> = this.productDataUpdated.asObservable();
-//=============================================================================================
-  private product: BehaviorSubject<string> = new BehaviorSubject('');
-   productNewData: Observable<string> = this.product.asObservable();
-
-//=============================================================================================
+  private readonly productDataSubject: BehaviorSubject<string> = new BehaviorSubject('');
+  productDataObject: Observable<string> = this.productDataSubject.asObservable();
+//==========================================================================================
+  private readonly productSubject: BehaviorSubject<string> = new BehaviorSubject('');
+  productNewData: Observable<string> = this.productSubject.asObservable();
+//==========================================================================================
+  constructor() {}
+//==========================================================================================
   sendUpdatedProductData(data: string) {
-    this.productDataUpdated.next(data);
+    this.productDataSubject.next(data);
   }
-//=============================================================================================
+//==========================================================================================
   sendNewProductAddedToUpdate(data: string) {
-    this.product.next(data);
+    this.productSubject.next(data);
   }
-//=============================================================================================
-
 }

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedComponent } from './shared.component';
-import { AngularMaterialModule } from '../angular-material.module';
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { ToastrModule } from 'ngx-toastr';
-// import { AngularMaterialModule } from './angular-material.module';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { FormsModule } from '@angular/forms';
+import { AngularMaterialModule } from '../angular-material.module';
 
 
 @NgModule({
@@ -23,9 +24,13 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
       progressBar: true,
     }),
-         
+    NgxStarRatingModule,
+    FormsModule,
+
   ],
-  exports:[NumbersOnlyDirective]
+  exports:[NumbersOnlyDirective , NgxStarRatingModule , FormsModule,
+
+  ]
 
 })
 export class SharedModule { }

@@ -1,0 +1,12 @@
+.delete-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    mat-dialog-actions {
+        button {
+            color: #fff
+        }
+    }
+}

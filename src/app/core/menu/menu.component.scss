@@ -1,36 +1,35 @@
-/* styles.scss or any other global style file */
-
 nav {
-    background-color: #007bff;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    color: #fff;
-  }
-  
+  background-color: #007bff;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  box-shadow: 1px 2px 4px 0px #ccc;
+
   .nav-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    img {
+      width: auto;
+      height: 59px;
+    }
   }
-  
+
   .icons-section {
     display: flex;
     align-items: center;
+    mat-icon {
+      font-size: 24px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
   }
-  
-  mat-icon {
-    font-size: 24px;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  
-  label {
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
+}

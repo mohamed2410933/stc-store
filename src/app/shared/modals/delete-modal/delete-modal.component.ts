@@ -21,5 +21,5 @@ export class DeleteModalComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  ngOnInit() {}
+ 
 }

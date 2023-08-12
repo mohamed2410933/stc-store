@@ -1,51 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
+const USER_ROLE = 'user';
+const ADMIN_ROLE = 'admin';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
-  //#region Public Variables
-    public userName: string = "";
-    public password: string = "";
-    public loginType: string ="";
-    public activeButton: string = 'admin';
-//#endregion
- 
+export class LoginComponent implements OnInit {
+  public loginForm!: FormGroup;
+
   constructor(
     private router: Router,
-    private toastr: ToastrService,
-    ) { }
-//=============================================================================================
-  loginAsAdmin(): void {
-    if (this.userName === 'admin' && this.password === 'admin') {
-      localStorage.setItem('userRole' , 'admin')
-      this.toastr.success('Admin successfully logged in')
-        this.router.navigate(['/admin/products']);
-    } else {
-      this.toastr.error('Invalid user username or password')
-    }
+    private toastrService: ToastrService,
+    private formBuilder: FormBuilder
+  ) {}
+//==============================================================================================
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
-//=============================================================================================
-  loginAsUser(): void {
-    if (this.userName === 'user' && this.password === 'user') {
-        localStorage.setItem('userRole' , 'user')
-        this.toastr.success('User successfully logged in')
-        this.router.navigate(['/user/categories']);
+//==============================================================================================
+  login() {
+    const userName = this.loginForm.value.userName;
+    const password = this.loginForm.value.password;
 
+    if (this.validateUser(userName, password, USER_ROLE)) {
+      localStorage.setItem('userRole', USER_ROLE);
+      this.toastrService.success('User successfully logged in');
+      this.router.navigate(['/user']);
+    } else if (this.validateUser(userName, password, ADMIN_ROLE)) {
+      localStorage.setItem('userRole', ADMIN_ROLE);
+      this.toastrService.success('Admin successfully logged in');
+      this.router.navigate(['/admin']);
     } else {
-        this.toastr.error('Invalid user username or password')
+      this.toastrService.error('Invalid username or password');
     }
   }
-//=============================================================================================
-  loginAs(role: string) {
-    this.activeButton = role;
-    localStorage.setItem('loginType' , role)
-  }
-//=============================================================================================
-  login(){
-    this.activeButton == 'user' ? this.loginAsUser() : this.loginAsAdmin();
+//==============================================================================================
+  private validateUser(userName: string, password: string, role: string): boolean {
+    return userName === role && password === role;
   }
 }

@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, debounceTime, distinctUntilChanged, fromEvent, map, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -18,27 +17,30 @@ export class CategoriesComponent implements OnInit {
       public products: any = []
       public filteredProducts: any = []
       public categorySelected: any
-      public searchQuery: string = '';
-      public originalProducts: any[] = []; // Initialize an array to hold the original products
-
+      public originalProducts: any[] = [];
+      public listView: boolean = false;
+      public selectedSortOption: string | undefined;
+      public productsLengthValue: any
+      public selectedCategory: any = ""
+      public categoryImages = [
+        { name: 'electronics', imageSrc: '../../../assets/images/electronics.jpg' },
+        { name: 'jewelery', imageSrc: '../../../assets/images/jewelry.jpg' },
+        { name: "men's clothing", imageSrc: '../../../assets/images/mens.jpg' },
+        { name: "women's clothing", imageSrc: '../../../assets/images/womens.jpg' }
+      ];
   //#endregion
   constructor(
     private productService: ProductsService,
-
     private categoriesService: CategoriesService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService
-
-  ) { 
-
-  }
-
+  ) {}
+  //=============================================================================================
   ngOnInit(): void {
     this.getCategories();
     this.getAllProducts();
     this.search();
   }
-
   //=============================================================================================
   getAllProducts() {
     this.spinner.show();
@@ -47,6 +49,7 @@ export class CategoriesComponent implements OnInit {
         this.spinner.hide();
         this.products = data;
         this.originalProducts = [...this.products]; // Make a copy of the original products
+        this.selectedCategory = "";
       },
       (error) => {
         this.toastr.error('Error fetching products', error);
@@ -89,12 +92,45 @@ export class CategoriesComponent implements OnInit {
   //=============================================================================================
   getProductsByCategory(category: any) {
     this.spinner.show();
-    this.productService.getProductByCategory(category).subscribe(
+    this.selectedCategory = category;
+    this.productService.getProductsByCategory(category).subscribe(
       (data: any) => {
         this.spinner.hide();
         this.products = data;
       })
   }
- 
+  //=============================================================================================
+  changeProductView(value: any) {
+    this.listView = value;
+  }
+  //=============================================================================================
+  sortProducts() {
+    switch (this.selectedSortOption) {
+      case 'Title A - Z':
+        this.products.sort((a: any, b: any) => a.title.localeCompare(b.title));
+        break;
+      case 'Title Z - A':
+        this.products.sort((a: any, b: any) => b.title.localeCompare(a.title));
+        break;
+      case 'Price : low to high':
+        this.products.sort((a: any, b: any) => a.price - b.price);
+        break;
+      case 'Price : high to low':
+        this.products.sort((a: any, b: any) => b.price - a.price);
+        break;
+      case 'Rating : low to high':
+        this.products.sort((a: any, b: any) => (a.rating?.rate || 0) - (b.rating?.rate || 0));
+        break;
+      case 'Rating : high to low':
+        this.products.sort((a: any, b: any) => (b.rating?.rate || 0) - (a.rating?.rate || 0));
+        break;
+      default:
+        // Do nothing for the "-- None --" option
+        this.products = [...this.originalProducts];
+        break;
+    }
+  }
+  
+  //=============================================================================================
 
 }

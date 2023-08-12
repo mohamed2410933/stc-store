@@ -4,35 +4,28 @@ import { UserComponent } from './user.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductDetailsComponent } from './categories/product-details/product-details.component';
 
-const routes: Routes = 
-[
-//   { path: '',
-//    component: UserComponent
-
-// }
-
-{
-  path: '',
-  component: UserComponent,
-  children: [
-      {
-          path:'',
-          redirectTo:"categories",
+const routes: Routes =
+  [
+    {
+      path: '',
+      component: UserComponent,
+      children: [
+        {
+          path: '',
+          redirectTo: "categories",
           pathMatch: 'full',
         },
-      {
+        {
           path: 'categories',
           component: CategoriesComponent,
-      },
-      {
+        },
+        {
           path: 'product-details/:id',
           component: ProductDetailsComponent,
-      },
-   
-  ],
-},
-
-];
+        },
+      ],
+    },
+  ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

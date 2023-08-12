@@ -44,7 +44,13 @@
           .product-price {
             font-size: 1.25rem;
             font-weight: bold;
-            color: #007bff; // Customize the color
+            color: #007bff; 
+          }
+          .product-rating{
+            mat-icon{
+              vertical-align: bottom;
+              color: goldenrod;
+            }
           }
         }
       }
@@ -70,3 +76,20 @@
         }
       }
 }
+
+.product-list{
+  width: 100% !important;
+  flex-direction: row !important;
+  .product-image {
+        width: 50% !important;
+  }
+  .product-details{
+    width: 25% !important;;
+  }
+  mat-card-actions{
+    width: 25% !important;;
+
+  }
+}
+
+

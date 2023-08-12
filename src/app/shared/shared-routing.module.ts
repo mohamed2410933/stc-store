@@ -6,7 +6,6 @@ const adminRoutes: Routes = [
         path: '',
         component: SharedComponent,
         children: [
-          
         ],
     },
 ];

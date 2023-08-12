@@ -1,31 +1,21 @@
-<div class="login-container">
-
+<div class="form-container">
+  <img src="../../../assets/images/logo.png" alt="">
   <mat-card class="login-card">
-   
-    <mat-card-actions>
-      <button mat-fab extended color="primary" #adminButton (click)="loginAs('admin')"
-        [ngClass]="{'selected' : activeButton == 'admin' }">
-        <mat-icon>manage_accounts</mat-icon>
-        Login as Admin
-      </button>
-      <button mat-fab extended color="primary" #userButton (click)="loginAs('user')"
-      [ngClass]="{'selected' : activeButton == 'user' }">
-        <mat-icon>person</mat-icon>
-        Login as User
-      </button>
-    </mat-card-actions>
-    
-    <div class="form-container">
-      <mat-form-field>
-        <input matInput placeholder="Admin Username" name="userName" [(ngModel)]="userName" required>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="password" placeholder="Admin Password" name="password" [(ngModel)]="password" required>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
-    </div>
+    <p class="fs-3">Login</p>
+      <form class="login-form"  [formGroup]="loginForm" >
+        <mat-form-field appearance="outline">
+          <mat-label>User name</mat-label>
+          <input matInput placeholder="User name" formControlName="userName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="password" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+      </form>
   </mat-card>
 
 </div>
+
+
+

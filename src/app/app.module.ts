@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,9 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { ToastrModule } from 'ngx-toastr';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
 @NgModule({
   declarations: [
     AppComponent
@@ -29,13 +25,6 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     HttpClientModule,
     CommonModule,
     CoreModule,
-    NgxSpinnerModule,
-    // ToastrModule.forRoot({
-    //   timeOut: 10000,
-    //   positionClass: 'toast-bottom-right',
-    //   preventDuplicates: true,
-    // }),
-    NgxImageZoomModule
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

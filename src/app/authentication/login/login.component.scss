@@ -1,77 +1,62 @@
-.login-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 75vh;
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+
+  img {
+    max-width: 190px;
   }
-  
+
   .login-card {
-    width: 50%;
     display: flex;
     align-content: center;
     align-items: center;
-    padding: 2rem 0;
-  
-    // Add box shadow for a slight depth effect
+    padding: 2rem;
     box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.2);
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-  
-    // Add some space between form fields and buttons
-    margin-top: 1rem;
-  }
-  
-  // Add styles for the form fields
-  .mat-form-field {
-    margin-bottom: 1rem;
-    width: 100%;
-  
-    // Style the input element
-    input.mat-input-element {
-      border-radius: 4px;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+
+      .mat-form-field {
+        margin-bottom: 1rem;
+        width: 100%;
+
+        input.mat-input-element {
+          border-radius: 4px;
+          padding: 0.5rem;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+        }
+      }
+
+      mat-card-actions {
+        display: flex;
+        justify-content: center;
+
+        button {
+          margin: 0 0.5rem;
+        }
+      }
+
+      .login-button {
+        background-color: #1976d2;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
     }
   }
-  
-  // Style the login buttons
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-  
-    // Add space between the buttons
-    button {
-      margin: 0 0.5rem;
-    }
-  }
-  
-  .login-button {
-    // Button colors
-    background-color: #1976d2;
-    color: #fff;
-  
-    // Add padding to make the button slightly bigger
-    padding: 0.5rem 1rem;
-  
-    // Add some animations for the login button
-    transition: transform 0.3s ease;
-  
-    &:hover {
-      transform: scale(1.05);
-    }
-  
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-  .selected{
-    background: rebeccapurple;
-  }
+}

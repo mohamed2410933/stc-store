@@ -1,26 +1,81 @@
 <div class="container-fluid">
-    <mat-card class="categories-card mt-3">
-        <mat-card-content>
-            <mat-chip-listbox aria-label="Fish selection">
-                <mat-chip-option class="mx-3" *ngFor="let category of categories" (click)="getProductsByCategory(category)">
-                  {{ category }}
-                </mat-chip-option>
-              </mat-chip-listbox>
-        </mat-card-content>
-    </mat-card>
-    <div class="row mt-5 container-fluid">
-        <div class="w-50">
-            <div class="filter my-3">
-          
-                <div class="mt-2">
-                    <input type="text" placeholder="Search" #searchInput class="form-control"  [(ngModel)]="searchQuery"   >
-                </div>
-            
-            </div>
-        </div>
    
-         <app-products  [products]="products"></app-products>
+    <mat-card class="categories-card mt-3 py-3">
+        <ng-container *ngFor="let category of categoryImages">
+            <div>
+                <img [src]="category.imageSrc" alt="" (click)="getProductsByCategory(category.name)">
+                <p class="category-name text-capitalize "
+
+                >{{ category.name }}</p>
+            </div>
+        </ng-container>
+        <div>
+            <button mat-stroked-button color="primary" (click)="getAllProducts()">View All Products</button>
+        </div>
+      </mat-card>
+
+    <mat-card class="categories-opertaions-card text-center mt-3 py-3">
+        <ng-container class="container row">
+           <div class="col-4">
+            <div class="mt-2">
+                <mat-form-field class="search w-75">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="Search"  #searchInput >
+                  </mat-form-field>
+            </div>
+           </div>
+           <div class="col-4">
+      <!-- <mat-form-field class="w-75" >
+        <mat-select [(ngModel)]="selectedSortOption" (ngModelChange)="sortProducts()">
+            <mat-option>-- None --</mat-option>
+            <mat-option value="Title A - Z">Title A - Z</mat-option>
+            <mat-option value="Title Z - A">Title Z - A</mat-option>
+            <mat-option value="Price : low to high">Price : low to high</mat-option>
+            <mat-option value="Price : high to low">Price : high to low</mat-option>
+            <mat-option value="Rating : low to high">Rating : low to high</mat-option>
+            <mat-option value="Rating : high to low">Rating : high to low</mat-option>
+          </mat-select>
+               <mat-label> <strong> Sort by</strong></mat-label>
+        </mat-form-field> -->
+        <mat-form-field class="w-75">
+            <mat-label>Sort By</mat-label>
+            <mat-select [(ngModel)]="selectedSortOption" (ngModelChange)="sortProducts()">
+              <mat-option value="">-- None --</mat-option>
+              <mat-option value="Title A - Z">
+                <mat-icon>sort_by_alpha</mat-icon> Title A - Z
+              </mat-option>
+              <mat-option value="Title Z - A">
+                <mat-icon>sort_by_alpha</mat-icon> Title Z - A
+              </mat-option>
+              <mat-option value="Price : low to high">
+                <mat-icon>arrow_upward</mat-icon> Price : low to high
+              </mat-option>
+              <mat-option value="Price : high to low">
+                <mat-icon>arrow_downward</mat-icon> Price : high to low
+              </mat-option>
+              <mat-option value="Rating : low to high">
+                <mat-icon>star</mat-icon> Rating : low to high
+              </mat-option>
+              <mat-option value="Rating : high to low">
+                <mat-icon>star_border</mat-icon> Rating : high to low
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
           
-    
+           </div>
+           <div class="col-4">
+            <mat-icon class="mx-2" (click)="changeProductView(true)">view_list</mat-icon>
+            <mat-icon class="mx-2" (click)="changeProductView(false)">view_module </mat-icon>
+           </div>
+       
+        </ng-container>
+     
+      </mat-card>
+
+    <div class="row  container-fluid">
+        <div class=" my-3" *ngIf="selectedCategory">
+           <span class="fs-5" >Filtered By : </span> <span class="fw-bold fs-5">{{ selectedCategory }}</span>
+        </div>
+         <app-products [ngClass]="{'mt-3' : !selectedCategory}" [products]="products" [listView]="listView"></app-products>
     </div>
 </div>

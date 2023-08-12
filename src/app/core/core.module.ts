@@ -5,9 +5,9 @@ import { CoreRoutingModule } from './core-routing.module';
 import { CoreComponent } from './core.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
-import { AngularMaterialModule } from '../angular-material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AngularMaterialModule } from '../angular-material.module';
 
 
 @NgModule({
@@ -20,14 +20,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     CommonModule,
     CoreRoutingModule,
-    AngularMaterialModule,
     NgxSpinnerModule,
+    AngularMaterialModule
   ],
   exports: [
     MenuComponent,
     FooterComponent,
     NgxSpinnerModule,
-
   ]
 })
 export class CoreModule { }

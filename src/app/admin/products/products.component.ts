@@ -38,10 +38,9 @@ export class ProductsComponent implements AfterViewInit {
     public displayedColumns: string[] = ['id', 'image', 'title', 'price', 'category', 'action'];
     public products:any =[]
     public dataSource = new MatTableDataSource<Product>(ELEMENT_DATA);
-    public name: string="";
-    public color: string="";
     public dataSubscreption:any
     @ViewChild(MatPaginator) paginator!: MatPaginator;
+    public pageSize =0
    //#endregion
   constructor(
       private productService: ProductsService,
@@ -58,25 +57,24 @@ export class ProductsComponent implements AfterViewInit {
   }
 //=============================================================================================
   getData() {
-   this.dataSubscreption =  this.sharedService.productData.subscribe((response : any) => {
+   this.dataSubscreption =  this.sharedService.productDataObject.subscribe((response : any) => {
       (response && response.id) ?  this.getAllProducts(response)  :  this.getAllProducts() 
     });
   }
 //=============================================================================================
-  getAllProducts(productUpdated?:any) {
+  getAllProducts(productUpdated?:any , limit?:number) {
     this.spinner.show();
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts(limit).subscribe(
       (data:any) => {
         this.spinner.hide()
         this.products = data;
         if(productUpdated){
-          // console.log(productUpdated);
           const productIndex = this.products.findIndex((product:any) => product.id === productUpdated.id);
               if (productIndex !== -1) {
                   this.products[productIndex] = productUpdated;
                 this.dataSource = new MatTableDataSource<Product>(this.products);
               }else{
-                this.products.unshift(productUpdated)
+                this.products.push(productUpdated)
                 this.dataSource = new MatTableDataSource<Product>(this.products);
               }
               this.dataSubscreption.unsubscribe()
@@ -92,20 +90,20 @@ export class ProductsComponent implements AfterViewInit {
 //=============================================================================================
    //Initiates navigation to Add/Edit Product page in admin section.
   openAddProductPage(){
-     this.router.navigate(['/admin/add-edit-product'])
+     this.router.navigate(['/admin/product-operations'])
   }
 //=============================================================================================
     //Updates product and navigates to Edit page with product's ID.
   onEditProduct(product: any) {
     this.sharedService.sendNewProductAddedToUpdate(product)
-    this.router.navigate(['/admin/add-edit-product/' + product.id])
+    this.router.navigate(['/admin/product-operations/' + product.id])
   }
 //=============================================================================================
    // Initiates deletion confirmation modal; continues on user confirmation, deleting product.
   openDeletePopip(product: any) {
       const dialogRef = this.dialog.open(DeleteModalComponent, {
         width: '400px',
-        data: { name: 'mohamed', color: '#fff' },
+        data: {},
       });
       dialogRef.afterClosed().subscribe((res) => {
         if(res){
@@ -128,6 +126,12 @@ export class ProductsComponent implements AfterViewInit {
           }
         );
     }
+//=============================================================================================
+    // handlePageChange(event: any) {
+    //   this.pageSize = event.pageSize;
+    //   this.getAllProducts('',this.pageSize);
+    // }
+    
 }
 
 

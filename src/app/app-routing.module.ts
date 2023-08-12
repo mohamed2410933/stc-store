@@ -7,7 +7,6 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-
   { path: 'login', component: LoginComponent },
   {
     path: 'admin',
@@ -19,15 +18,16 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
     canLoad: [UserAccessGuard]
   },
-  { path: 'not-found', component: NotFoundComponent }, // Route for Not Found Component
-  { path: '**', redirectTo: 'not-found' } // Wildcard route to redirect to Not Found Component
-  // { path: '**', redirectTo: 'login' },
+  
+  // Route for Not Found Component
+  { path: 'not-found', component: NotFoundComponent },
+  
+  // Wildcard route to redirect to Not Found Component
+  { path: '**', redirectTo: 'not-found' }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

@@ -1,36 +1,31 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { SharedService } from 'src/app/services/shared.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit ,  OnDestroy {
+export class MenuComponent implements OnInit {
   //#region  Public Variables
-      public logedInStatus:boolean=false
-      public subscreption:any
+      public logedInStatus: boolean = false;
   //#endregion
-  constructor( private router: Router , private sharedService:SharedService,activatedRoute: ActivatedRoute){}
-//=========================================================================================
-ngOnInit(): void {
-  this.router.events.subscribe((event) => {
-    if (event instanceof NavigationEnd) {
-      this.logedInStatus = !event.url.includes('login');
-    }
-  });
-}
-//=========================================================================================
-  logOut(){
-    this.logedInStatus =false;
+
+  constructor(private router: Router) {}
+//============================================================================================
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.logedInStatus = !event.url.includes('login');
+      }
+    });
+  }
+//============================================================================================
+  logOut(): void {
+    this.logedInStatus = false;
     localStorage.clear();
-    
-     this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
-//=========================================================================================
-  ngOnDestroy(): void {
-    this.subscreption.unsubscribe();
-  }
-//=========================================================================================
+//============================================================================================
+
 }
